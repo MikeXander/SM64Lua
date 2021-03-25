@@ -166,9 +166,9 @@ function Drawing.drawMiscData(x, y_0, display_input_text)
 		function(y) return wgui.text(x, y, "XZ Movement: " .. MoreMaths.Round(Engine.GetDistMoved(), 6)) end,
 		function(y) return wgui.text(x, y, string.format("Spd Efficiency: %.2f%%", Engine.GetSpeedEfficiency())) end,
 		function(y) return wgui.text(x, y, largeBrush("Y Spd: " .. speed)) end,
-		function(y) return wgui.text(x, y, smallBrush("Mario X: " .. MoreMaths.Round(MoreMaths.DecodeDecToFloat(Memory.Mario.X))), 6) end,
-		function(y) return wgui.text(x, y, "Mario Y: " .. MoreMaths.Round(MoreMaths.DecodeDecToFloat(Memory.Mario.Y)), 6) end,
-		function(y) return wgui.text(x, y, "Mario Z: " .. MoreMaths.Round(MoreMaths.DecodeDecToFloat(Memory.Mario.Z)), 6) end,
+		function(y) return wgui.text(x, y, smallBrush("Mario X: " .. MoreMaths.Round(MoreMaths.DecodeDecToFloat(Memory.Mario.X), 6))) end,
+		function(y) return wgui.text(x, y, "Mario Y: " .. MoreMaths.Round(MoreMaths.DecodeDecToFloat(Memory.Mario.Y), 6)) end,
+		function(y) return wgui.text(x, y, "Mario Z: " .. MoreMaths.Round(MoreMaths.DecodeDecToFloat(Memory.Mario.Z), 6)) end,
 		function(y) return wgui.text(x, y, mediumBrush("Action: " .. Engine.GetCurrentAction())) end
 	}
 
