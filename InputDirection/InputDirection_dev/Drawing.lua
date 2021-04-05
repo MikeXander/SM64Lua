@@ -21,6 +21,10 @@ function Drawing.resizeScreen()
 	end
 end
 
+function Drawing.UnResizeScreen()
+	wgui.resize(Drawing.Screen.Width, Drawing.Screen.Height)
+end
+
 local function largeBrush(text)
 	wgui.setfont(16,"Arial","")
 	return text
@@ -42,13 +46,6 @@ function Drawing.paint()
 	wgui.rect(Drawing.Screen.Width, 0, Drawing.Screen.Width + Drawing.WIDTH_OFFSET, Drawing.Screen.Height - 20)
 	wgui.setcolor(BACKGROUND_COLOUR)
 	wgui.setfont(16,"Arial","")
-	for i = 1, table.getn(Buttons), 1 do
-		if Buttons[i].type == ButtonType.button then
-			Drawing.drawButton(Buttons[i].box[1], Buttons[i].box[2], Buttons[i].box[3], Buttons[i].box[4], Buttons[i].text, Buttons[i].pressed())
-		elseif Buttons[i].type == ButtonType.textArea then
-			Drawing.drawTextArea(Buttons[i].box[1], Buttons[i].box[2], Buttons[i].box[3], Buttons[i].box[4], string.format("%0".. Buttons[i].inputSize .."d", Buttons[i].value()), Buttons[i].enabled(), Buttons[i].editing())
-		end
-	end
     Drawing.drawAnalogStick(Drawing.Screen.Width + Drawing.WIDTH_OFFSET / 3 + 13, 90 + 50)
     Memory.Refresh()
     Drawing.drawInputButtons(Drawing.Screen.Width + Drawing.WIDTH_OFFSET / 3 + 13, -230 + 50)
