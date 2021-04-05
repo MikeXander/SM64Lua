@@ -21,6 +21,10 @@ function Drawing.resizeScreen()
 	end
 end
 
+function Drawing.UnResizeScreen()
+	wgui.resize(Drawing.Screen.Width, Drawing.Screen.Height)
+end
+
 local function largeBrush(text)
 	wgui.setfont(16,"Arial","")
 	return text
@@ -42,32 +46,10 @@ function Drawing.paint()
 	wgui.rect(Drawing.Screen.Width, 0, Drawing.Screen.Width + Drawing.WIDTH_OFFSET, Drawing.Screen.Height - 20)
 	wgui.setcolor(BACKGROUND_COLOUR)
 	wgui.setfont(16,"Arial","")
-	for i = 1, table.getn(Buttons), 1 do
-		if Buttons[i].type == ButtonType.button then
-			Drawing.drawButton(Buttons[i].box[1], Buttons[i].box[2], Buttons[i].box[3], Buttons[i].box[4], Buttons[i].text, Buttons[i].pressed())
-		elseif Buttons[i].type == ButtonType.textArea then
-			Drawing.drawTextArea(Buttons[i].box[1], Buttons[i].box[2], Buttons[i].box[3], Buttons[i].box[4], string.format("%0".. Buttons[i].inputSize .."d", Buttons[i].value()), Buttons[i].enabled(), Buttons[i].editing())
-		end
-	end
     Drawing.drawAnalogStick(Drawing.Screen.Width + Drawing.WIDTH_OFFSET / 3 + 13, 90 + 50)
     Memory.Refresh()
     Drawing.drawInputButtons(Drawing.Screen.Width + Drawing.WIDTH_OFFSET / 3 + 13, -230 + 50)
     Drawing.drawMiscData(Drawing.Screen.Width + 13, 245 + 50)
-end
-
-function Drawing.drawButton(x, y, width, length, text, pressed)
-	if (pressed) then wgui.setcolor("white") else wgui.setcolor("black") end
-	wgui.setfont(10,"Courier","")
-	wgui.setbrush("#888888")
-	wgui.setpen("#888888")
-	wgui.rect(x + 1, y + 1, x + width + 1, y + length + 1)
-	if (pressed) then wgui.setbrush("#FF0000") else wgui.setbrush("#F2F2F2") end
-	if (pressed) then wgui.setpen("#EE8888") else wgui.setpen("#888888") end
-	wgui.rect(x, y, x + width, y + length)
-	if (pressed) then wgui.setbrush("#EE0000") else wgui.setbrush("#E8E8E8") end
-	if (pressed) then wgui.setpen("#EE0000") else wgui.setpen("#E8E8E8") end
-	wgui.rect(x+1, y+1 + length/2, x-1 + width, y-1 + length)
-	wgui.text(x + width/2 - 4.5 * string.len(text), y + length/2 - 7, text)
 end
 
 function Drawing.drawTextArea(x, y, width, length, text, enabled, editing)
