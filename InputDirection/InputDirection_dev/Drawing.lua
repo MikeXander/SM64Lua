@@ -52,21 +52,6 @@ function Drawing.paint()
     Drawing.drawMiscData(Drawing.Screen.Width + 13, 245 + 50)
 end
 
-function Drawing.drawButton(x, y, width, length, text, pressed)
-	if (pressed) then wgui.setcolor("white") else wgui.setcolor("black") end
-	wgui.setfont(10,"Courier","")
-	wgui.setbrush("#888888")
-	wgui.setpen("#888888")
-	wgui.rect(x + 1, y + 1, x + width + 1, y + length + 1)
-	if (pressed) then wgui.setbrush("#FF0000") else wgui.setbrush("#F2F2F2") end
-	if (pressed) then wgui.setpen("#EE8888") else wgui.setpen("#888888") end
-	wgui.rect(x, y, x + width, y + length)
-	if (pressed) then wgui.setbrush("#EE0000") else wgui.setbrush("#E8E8E8") end
-	if (pressed) then wgui.setpen("#EE0000") else wgui.setpen("#E8E8E8") end
-	wgui.rect(x+1, y+1 + length/2, x-1 + width, y-1 + length)
-	wgui.text(x + width/2 - 4.5 * string.len(text), y + length/2 - 7, text)
-end
-
 function Drawing.drawTextArea(x, y, width, length, text, enabled, editing)
 	wgui.setcolor(TEXT_COLOUR)
 	wgui.setfont(16,"Courier","b")
